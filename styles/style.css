@@ -1,0 +1,52 @@
+/* Reseta alguns estilos para garantir consistência */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estiliza o body e o fundo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Estiliza o container */
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Estiliza o título principal */
+h1 {
+    font-size: 2.5rem;
+    color: #FF6347;
+    margin-bottom: 20px;
+}
+
+/* Estiliza o parágrafo */
+p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Adaptação responsiva para telas pequenas */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
