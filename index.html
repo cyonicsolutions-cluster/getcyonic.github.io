@@ -13,8 +13,9 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
-            color: #333;
+            margin: 0; /* Remove a margem padrão */
+            background-color: #f0f0f0; /* Cor padrão para modo claro */
+            color: #333; /* Cor padrão para texto */
             text-align: center;
             position: relative;
         }
@@ -24,7 +25,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); /* Centraliza vertical e horizontalmente */
             font-size: 1.5em;
         }
 
@@ -45,6 +46,7 @@
             width: 50px;
             height: 50px;
             animation: spin 1s linear infinite;
+            margin: 0 auto; /* Centraliza o spinner */
         }
     </style>
 </head>
