@@ -14,9 +14,11 @@
             align-items: center;
             height: 100vh;
             margin: 0; /* Remove a margem padrão */
-            background-color: #2c3e50; /* Cor de fundo escura */
-            color: #ecf0f1; /* Cor do texto clara */
+            background-color: #d2b48c; /* Cor de fundo marrom pastel */
+            color: #2c3e50; /* Cor do texto */
             text-align: center;
+            position: relative;
+            overflow: hidden; /* Evita overflow */
         }
 
         .loading {
@@ -25,12 +27,11 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%); /* Centraliza vertical e horizontalmente */
-            font-size: 1.5em;
         }
 
         .content {
             display: none; /* Oculto até que o JS esteja habilitado */
-            background: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
+            background: rgba(255, 255, 255, 0.8); /* Fundo translúcido */
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -45,8 +46,8 @@
         }
 
         .spinner {
-            border: 8px solid rgba(236, 240, 241, 0.5); /* Cor do fundo */
-            border-top: 8px solid #3498db; /* Cor do spinner */
+            border: 8px solid rgba(255, 255, 255, 0.5); /* Cor do fundo */
+            border-top: 8px solid #2c3e50; /* Cor do spinner */
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -96,27 +97,46 @@
                 justify-content: center;
                 align-items: center;
                 height: 100vh;
-                background-color: #2c3e50; /* Fundo escuro */
+                background-color: #d2b48c; /* Fundo marrom pastel */
             }
         </style>
         <p>JavaScript está desabilitado. Por favor, ative-o para ver o conteúdo do site.</p>
     </noscript>
 
     <script>
-        // Simulando carregamento com um atraso
-        window.onload = function() {
-            const loadingElement = document.getElementById('loading');
-            const contentElement = document.getElementById('content');
+        let connectionAttempts = 0; // Contador de tentativas de conexão
+        const maxAttempts = 5; // Limite de tentativas
+        const loadingElement = document.getElementById('loading');
+        const contentElement = document.getElementById('content');
 
-            // Mostra a animação de carregamento
+        // Função para mostrar o conteúdo
+        function showContent() {
+            loadingElement.style.display = 'none'; // Esconde o carregamento
+            contentElement.style.display = 'block'; // Mostra o conteúdo
+        }
+
+        // Simulando carregamento com base em tentativas
+        window.onload = function() {
+            // Exibe a animação de carregamento
             loadingElement.style.display = 'block';
 
-            // Simula um carregamento de 2 segundos
-            setTimeout(() => {
-                loadingElement.style.display = 'none'; // Esconde o carregamento
-                contentElement.style.display = 'block'; // Mostra o conteúdo
-            }, 2000); // Atraso de 2 segundos
+            // Simula o carregamento baseado no número de tentativas de conexão
+            const interval = setInterval(() => {
+                connectionAttempts++;
+
+                if (connectionAttempts > maxAttempts) {
+                    clearInterval(interval);
+                    showContent(); // Mostra o conteúdo após o limite
+                }
+            }, 500); // Aumenta a animação de carregamento a cada 500 ms
         };
+
+        // Bloqueio de múltiplas conexões
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'hidden') {
+                connectionAttempts = 0; // Reinicia o contador ao ocultar a aba
+            }
+        });
     </script>
 </body>
 </html>
