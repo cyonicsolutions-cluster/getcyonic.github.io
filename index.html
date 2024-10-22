@@ -124,9 +124,10 @@
             const interval = setInterval(() => {
                 connectionAttempts++;
 
+                // Mostra o conteúdo após o limite
                 if (connectionAttempts > maxAttempts) {
                     clearInterval(interval);
-                    showContent(); // Mostra o conteúdo após o limite
+                    showContent(); 
                 }
             }, 500); // Aumenta a animação de carregamento a cada 500 ms
         };
