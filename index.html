@@ -124,7 +124,7 @@
         // Função para atualizar o conteúdo
         async function updateContent() {
             try {
-                const response = await fetch('https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/status.json'); // Substitua com seu repositório
+                const response = await fetch('https://raw.githubusercontent.com/getcyonic/getcyonic.github.io/main/status.json'); // Substitua com seu repositório
                 const data = await response.json();
                 contentTitle.textContent = data.title;
                 contentMessage.textContent = data.message;
