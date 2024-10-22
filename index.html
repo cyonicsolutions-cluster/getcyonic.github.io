@@ -112,12 +112,13 @@
         // Função para mostrar o conteúdo
         function showContent() {
             loadingElement.style.display = 'none'; // Esconde o carregamento
-            contentElement.style.display = 'none'; // Mostra o conteúdo
+            contentElement.style.display = 'block'; // Mostra o conteúdo
         }
 
         // Simulando carregamento com base em tentativas
         window.onload = function() {
             // Exibe a animação de carregamento
+            contentElement.style.display = 'none';
             loadingElement.style.display = 'block';
 
             // Simula o carregamento baseado no número de tentativas de conexão
@@ -127,7 +128,6 @@
                 // Mostra o conteúdo após o limite
                 if (connectionAttempts > maxAttempts) {
                     clearInterval(interval);
-                    contentElement.style.display = 'block';
                     showContent(); 
                 }
             }, 500); // Aumenta a animação de carregamento a cada 500 ms
