@@ -127,6 +127,7 @@
                 // Mostra o conteúdo após o limite
                 if (connectionAttempts > maxAttempts) {
                     clearInterval(interval);
+                    contentElement.style.display = 'block';
                     showContent(); 
                 }
             }, 500); // Aumenta a animação de carregamento a cada 500 ms
