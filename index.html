@@ -22,27 +22,17 @@
         }
 
         .loading {
-            display: none; /* Escondido por padrão */
+            display: flex; /* Muda para flex para centralizar o conteúdo */
+            flex-direction: column; /* Organiza em coluna */
+            align-items: center; /* Centraliza horizontalmente */
+            justify-content: center; /* Centraliza verticalmente */
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Centraliza vertical e horizontalmente */
-        }
-
-        .content {
-            display: none; /* Oculto até que o JS esteja habilitado */
-            background: rgba(255, 255, 255, 0.8); /* Fundo translúcido */
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            margin: 20px;
-        }
-
-        /* Estilo para a animação de carregamento */
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0; /* Preenche a tela inteira */
+            z-index: 10; /* Mantém o carregamento acima do conteúdo */
+            background: rgba(255, 255, 255, 0.8); /* Fundo claro para o carregamento */
         }
 
         .spinner {
@@ -53,6 +43,22 @@
             height: 50px;
             animation: spin 1s linear infinite;
             margin: 0 auto; /* Centraliza o spinner */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .content {
+            display: none; /* Oculto até que o JS esteja habilitado */
+            background: rgba(255, 255, 255, 0.8); /* Fundo translúcido */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            margin: 20px;
+            z-index: 5; /* Menor que o carregamento */
         }
 
         /* Estilo para a mensagem */
@@ -118,8 +124,7 @@
         // Simulando carregamento com base em tentativas
         window.onload = function() {
             // Exibe a animação de carregamento
-            contentElement.style.display = 'none';
-            loadingElement.style.display = 'block';
+            loadingElement.style.display = 'flex';
 
             // Simula o carregamento baseado no número de tentativas de conexão
             const interval = setInterval(() => {
